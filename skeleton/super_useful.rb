@@ -59,7 +59,6 @@ class BestFriend
         raise "Your friend needs a name"
       elsif fav_pastime.length<1
         raise "Your friend needs a pasttime"
-
       else
         @name = name
         @yrs_known = yrs_known
