@@ -1,4 +1,7 @@
-require_relative 'require'
+require 'byebug'
+require_relative 'piece'
+require_relative 'display'
+require_relative 'null_piece'
 class Board
   attr_reader :grid
 
@@ -10,7 +13,9 @@ class Board
 
   def populate
     chess_board = Array.new(8) {Array.new(8){NullPiece.new}}
-    chess_board[0][0] = Piece.new
+    chess_board[0][0] = King.new([0,0], self, :white)
+    chess_board[0][1] = King.new([0,1], self, :white)
+    chess_board[1][0] = King.new([1,0], self, :black)
     chess_board
 
   end
@@ -20,11 +25,11 @@ class Board
   end
 
   def [](pos)
-    @grid[pos[:row]][pos[:col]]
+    @grid[pos[0]][pos[1]]
   end
 
   def []=(pos, val)
-    @grid[pos[:row]][pos[:col]] = val
+    @grid[pos[0]][pos[1]] = val
   end
 
 
